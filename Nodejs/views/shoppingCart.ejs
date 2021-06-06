@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pl"></html>
+    <head>
+        <meta charset="utf-8">
+    
+        <title>Books shop</title>
+        <meta name="description" content="Books shop">
+    
+        <link rel="stylesheet" type="text/css" href="style.css">
+        
+
+    
+    
+    <body>
+
+        <div class="container">
+            <h1>Order</h1>
+
+            <% if (alert) { %>
+                <div class="allert">
+                    <%= alert %>
+
+
+                </div>
+            <% } %>
+        
+            <div style=" padding: 10px; ">
+                <a class="likeButton" style="float: left;" href="/index" >Back to shopping</a>
+                <a class="likeButton" style="float: left;" href="/cancelCart">Cancel Order</a>
+                <a class="likeButton" style="float: left;" href="/finalizeOrder">Finalize Order</a>
+            </div>
+        
+
+        <ul class="list" style="clear: both;">
+            <% cart.forEach(function(item){ %>
+                <li>
+                    <div>
+                        <b>Name: </b><%= item.name %>
+                    </div>
+                    <div>
+                        <b>Price: </b><%= item.price %>
+                    </div>
+                    <form  method="POST" action="/remove">
+                        <input hidden  type="text" name="bookId"  value= <%= item._id %>> 
+                        <input hidden type="text" name="bookName"  value= <%= item.name %>>
+                        <input hidden type="text" name="bookPrice"  value= <%= item.price %>>
+                        <button class="removeButton">Remove</button>
+                    </form>
+                </li>
+            <% }); %>
+          </ul>
+
+        </div> 
+    </body>
+    
+
+  </html>

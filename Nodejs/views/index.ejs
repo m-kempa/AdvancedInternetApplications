@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pl"></html>
+    <head>
+        <meta charset="utf-8">
+    
+        <title>Books Shop</title>
+        <meta name="description" content="Books Shop">
+    
+        <link rel="stylesheet" type="text/css" href="style.css">
+
+        <script>
+        </script>  
+    
+    </head>
+    
+    <body>
+
+        <div class="container">
+            <h1>Books Shop</h1>
+        
+            
+            <% if (alert) { %>
+                <div class="allert">
+                    <%= alert %>
+                </div>
+            <% } %>
+
+            
+
+            <a class="likeButton" href="/shoppingCart"  >Cart</a>
+
+            <ul class="list">
+                <% books.forEach(function(book){ %>
+                    <li>
+                        <div>
+                            <b>Name: </b>  <%= book.name %>
+                        </div>
+                        <div>
+                            <b>Price: </b> <%= book.price %>
+                        </div>
+                        <div>
+                            <form  method="POST" action="/add">
+                                <input hidden type="text" name="bookId"  value= <%= book._id %>>
+                                <input hidden type="text" name="bookName"  value= <%= book.name %>>
+                                <input hidden type="text" name="bookPrice"  value= <%= book.price %>>
+                                <button class="addButton" class="btn btn-primary">Add</button>
+                            </form>
+                        </div>
+                    </li>
+                <% }); %>
+            </ul>
+
+        </div> 
+    </body>
+
+  </html>

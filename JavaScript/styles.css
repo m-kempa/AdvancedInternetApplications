@@ -1,0 +1,31 @@
+table {
+    width: 100%;
+}
+th {
+    font-size: 25px;
+    text-align: center;
+    padding: 8px;
+}
+
+
+button {
+    font-size: 20px;
+    text-align: center;
+    background-color: #dddddd;
+    border: 2px solid black;
+    height: 40px;
+    border-radius: 5px;
+}
+
+td button {
+    width: 40%;
+    background-color: #dddddd;
+    margin: 2%;
+    margin-right: 5%;
+  }
+  
+input, label {
+    margin-right: 10%;
+    width: 90%;
+    height: 25px;
+  }

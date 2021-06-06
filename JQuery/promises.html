@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8" />
+ <title>jsonEX</title>
+ <script type="text/javascript"
+src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+ <script type="text/javascript">
+    function get(url) {
+        // Return a new promise.
+        return new Promise(function(resolve, reject) {
+        // Do the usual XHR stuff
+        var req = new XMLHttpRequest();
+        req.open('GET', url);
+
+        req.onload = function() {
+        // This is called even on 404 etc
+        // so check the status
+        if (req.status == 200) {
+        // Resolve the promise with the response text
+        resolve(req.response);
+        }
+        else {
+        // Otherwise reject with the status text
+        // which will hopefully be a meaningful error
+        reject(Error(" number: " + req.status + " | Information: " + req.statusText));
+      }
+    };
+
+    // Handle network errors
+    req.onerror = function() {
+      reject(Error("Network number: " + req.status + " | Information: " + req.statusText));
+    };
+
+    // Make the request
+    req.send();
+  });
+}
+
+    $(function () {
+        $('button').click(function (){
+            get($("#promiseInput").val()).then(
+                function(response){
+                    $("#content").append(response);
+                },
+                function(error){
+                    $("#content").append(error);
+                })
+        });
+    });
+ </script>
+</head>
+<body>
+    <div>
+    Input URL: <input id="promiseInput" type="text"></input><button>Load</button>
+    </div>
+    <div id="content"></div>
+</body>
+</html>

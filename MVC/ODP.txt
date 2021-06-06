@@ -1,0 +1,39 @@
+1) Jakie są obowiązki każdej warstwy architektury MVC i jakie są one połączone?
+Struktura MVC składa się z 3 wartstw: Model, View, Controller.
+a) Model odpowiada za określenie struktury, na której pracujemy. Dodatkowo
+może zawierać metody bezpośrednio z nim związane.
+b) View odpowiada za preznowanie danych
+c) Controller służy do komunikacji pomiędzy tymi elementami i wpływaniu na obecny stan medelu.
+
+2) Jakie są konwencje nazewnictrwa models, controllers, controller actions, views folders
+i views themselvese?
+a) Modele: pojedyńczy PascalCase + "Model". W przypadku modelu mającego znajdować się bezpośrednio
+w widoku można skorzystać z końcówki ViewModel.
+b) Widok: pojedyńczy  PascalCase. W przypadku Partiali: "_" + PascalCase +  "Partial"
+c) Kontroler: PascalCase w l mnogiej + Controller
+d) Dla każdego kontrolera tworzony jest folder w modelach o tej samej nazwie z zakończeniem
+"Models/ViewModels". Następnie jeśli controller nie korzysta tylko z jednego modelu
+to dla metod tworzone są modele o tej samej nazwie. Analogicznie jest z widokami.
+
+3) Jak przekazać dane od kontrolerów do widoków (2 opcje)?
+Dane można przekazać w formie modelu, bądź za pośrednictwem ViewBag. W wersji Core
+występują również TempData i ViewData.
+
+4) Jak zmapować adres URL do akcji kontrolera?
+Mapowaniem możemy zarządzać w RouteConfig.cs Domyślnie jest to:
+{adr_witryny}/"{controller}/{action}/{id}", gdzie: controller="Home", action = "Index",
+id= UrlParameter.Optional
+
+5) Jak ograniczyć akcje kontrolera do wykonywanie tylko za pośrednictwem określonych
+typów żądań HTTP (np. tylko przez POST)?
+Zarządzać żądaniami http można za pomocą atrybutów. [HttpGet], [HttpPost] itd.
+
+6) Jak upewnić się, że akcja kontrolera może zostać wywołana tylko za pośrednictwem
+formularza na naszej stronie internetowej i nie przez zewnętrzną prośbę?
+Aby kontroler odbierał tylko żądania od nas należy skorzystać z [ValidateAntiForgeryToken].
+W widoku należy umieścić @Html.AntiForgeryToken(). W nowszych wersjach nie jest to wymagane.
+
+7) Gdzie definiuje się walidację danych i jak zapewnić ją w widokach i kontrolerach?
+Aby sprawdzić, w kontrolerze czy dany model zawiera wszystkie wymagane pola wystarczy
+skorzystać z ModelState.isValid. Aby zdefiniować wymagane pola w modelu należy 
+skorzystać z adnotacji [Required]
