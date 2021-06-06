@@ -1,0 +1,55 @@
+header{
+    display: flex;
+    padding: $def-padding * 2;
+    align-items: center;
+    flex-direction: row;   
+
+    .container-header{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        #logoRS{
+            width: $def-pic-size;
+            height: $def-pic-size;
+        }
+        #title-of-page{
+            margin-left: $def-margin;
+            font-size: $def-font-size*2;
+            font-weight: bold;
+        
+            /* in mobile dev title of page is not visivle */
+            @media all and (max-width: $max-mobile) {
+            display: none;
+            }
+
+        }
+
+    }
+
+    .menu{
+        display: flex;
+        flex-grow: 3;
+        align-self: flex-start;
+        justify-content: flex-end;
+
+        a{
+            width: 80px;
+            font-weight: bold;
+            
+            /* in tablets and mobile devs list menu is hiden but menu icon is visible*/
+            @media all and (max-width: $max-tablet) {
+                display: none;
+            }
+        }
+        #icon-menu{
+            width: $def-pic-size;
+            height: $def-pic-size;
+
+            @media all and (min-width: $min-desktop) {
+                display: none;
+            }
+        }
+    }
+
+}

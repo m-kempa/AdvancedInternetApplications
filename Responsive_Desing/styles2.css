@@ -1,0 +1,173 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box; /*padding and border included in width and height */
+    font-size: 16px;
+    font-family: 'Times New Roman';
+    color: black;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+html {
+    height: 100%;
+    
+}
+
+body {
+    height: 100%;
+    display: flex;
+    flex-direction: column; /* flex container main-axis is the same as block-axis */
+}
+
+body .container-content {
+    flex: 1 0 auto;
+}
+
+body .container-content header{
+    display: flex;
+    padding: 40px;
+    align-items: center;
+    flex-direction: row;
+}
+
+body .container-content header .container-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+body .container-content header .container-header #logoRS{
+    width: 60px;
+    height: 60px;
+}
+
+body .container-content header .container-header #title-of-page{
+    margin-left: 20px;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+/* in mobile dev title of page is not visivle */
+@media all and (max-width: 600px) {
+    body .container-content header .container-header #title-of-page{
+        display: none;
+    }
+}
+
+body .container-content header .menu{
+    display: flex;
+    flex-grow: 3;
+    align-self: flex-start;
+    justify-content: flex-end;
+    
+}
+
+body .container-content header .menu a{
+    width: 100px;
+    font-weight: bold;
+}
+
+body .container-content header .menu #icon-menu{
+    width: 60px;
+    height: 60px;
+}
+
+@media all and (max-width: 1024px){
+    body .container-content header .menu a{
+        display: none;
+    }
+}
+
+@media all and (min-width: 1025px){
+    body .container-content header .menu #icon-menu{
+        display: none;
+    }
+}
+
+body .container-content main{
+    display: flex;
+    padding: 20px;
+}
+
+body .container-content main .articles{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    background-color: lightgray;
+    margin: 20px;
+    width: 100%;
+}
+
+body .container-content main .articles .title-name {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+body .container-content main .articles .title-name h1{
+    display: flex;
+    font-size: 24px;
+    width: 50%;
+    border-bottom: 2px solid black;
+    border-left: 2px solid black;
+    padding: 8px;
+    justify-content: center;
+}
+
+body .container-content main .articles .title-name .header-one{
+    background-color: lightskyblue;
+}
+
+body .container-content main .articles .title-name .header-two{
+    background-color: orangered;
+}
+
+body .container-content main .articles .title-name .header-three{
+    background-color: lightpink;
+}
+
+body .container-content main .articles .text-article{
+    padding: 20px;
+    text-align: justify;
+}
+
+body footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    height: 100px;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    padding: 20px;
+    background-color: lightgray;
+}
+
+body footer #author-name{
+    font-weight: bold;
+}
+
+
+@media all and (max-width: 1024px){
+    body .container-content main{
+        flex-wrap: wrap;
+    }
+    body .container-content main .articles{
+        flex: 1 0 40%;
+    }
+    body .container-content main .articles:first-child{
+        flex: 0 1 100%;
+    }
+}
+
+@media all and (max-width: 600px){
+    body .container-content main{
+        flex-direction: column;
+    }
+    body .container-content main .articles{
+        width: auto;
+    }
+}
+

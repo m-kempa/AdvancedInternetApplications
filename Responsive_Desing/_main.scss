@@ -1,0 +1,70 @@
+main{
+    display: flex;
+    $def-padding: 20px;
+
+    .articles{
+        display: flex;
+        flex-direction: column;
+        border: $border-param;
+        background-color: lightgray;
+        margin: $def-margin;
+        width: 100%;
+
+        .title-name {
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-start;
+            h1{
+                display: flex;
+                font-size: 24px;
+                width: 50%;
+                border-bottom: $border-param;
+                border-left: $border-param;
+                padding: 8px;
+                justify-content: center;
+            }
+            
+            @for $i from 1 through 3 {
+                @if $i == 1 {
+                    .header-one{
+                        background-color: lightskyblue;
+                    }
+                }
+                @else if $i == 2{
+                    .header-two{
+                        background-color: orangered;
+                    }
+                }
+                @else if $i == 3{
+                    .header-three{
+                        background-color: lightpink;
+                    }
+                }
+            } 
+        }
+
+        .text-article{
+            padding: $def-padding;
+            margin-top: $def-margin;
+            margin-bottom: $def-margin;
+            text-align: justify;
+        }
+    }
+
+    @media all and (max-width: $max-tablet){
+        flex-wrap: wrap;
+        
+        .articles{
+            flex: 1 0 40%;
+        }
+        .articles:first-child{
+            flex: 0 1 100%;
+        }
+    }
+    @media all and (max-width: $max-mobile){
+        flex-direction: column;
+        .articles{
+            width: auto;
+        }
+    }
+}
